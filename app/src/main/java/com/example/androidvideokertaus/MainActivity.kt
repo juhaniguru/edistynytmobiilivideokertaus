@@ -30,7 +30,13 @@ class MainActivity : ComponentActivity() {
                 ) {
                     NavHost(navController = navController, startDestination = "landingScreen") {
                         composable("landingScreen") {
-                            LandingScreen()
+                            LandingScreen(goToGuessNumberScreen = {
+                                navController.navigate("guessNumberScreen")
+                            })
+                        }
+
+                        composable("guessNumberScreen") {
+                            GuessNumberScreen()
                         }
 
 
