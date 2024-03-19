@@ -9,13 +9,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun LandingScreen(goToGuessNumber: () -> Unit, goToPlusMinus : () -> Unit) {
+fun LandingScreen(goToGuessNumber: () -> Unit, goToPlusMinus : () -> Unit, goToPosts: () -> Unit) {
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Button(onClick = { goToGuessNumber() }) {
             Text("Guess Number")
         }
         Button(onClick = { goToPlusMinus() }) {
             Text("Plus & Minus")
+        }
+
+        Button(onClick = { goToPosts() }) {
+            Text("Posts")
         }
     }
 }
