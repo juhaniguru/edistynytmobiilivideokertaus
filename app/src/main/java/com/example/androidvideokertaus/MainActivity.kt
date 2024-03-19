@@ -32,11 +32,19 @@ class MainActivity : ComponentActivity() {
                         composable("landingScreen") {
                             LandingScreen(goToGuessNumber = {
                                 navController.navigate("guessNumberScreen")
+                            }, goToPlusMinus = {
+                                navController.navigate("plusMinusScreen")
                             })
                         }
 
                         composable("guessNumberScreen") {
                             GuessNumberScreen()
+                        }
+
+                        composable("plusMinusScreen") {
+                            PlusMinusScreen(goToLandingScreen = {
+                                navController.navigate("landingScreen")
+                            })
                         }
 
 
