@@ -34,6 +34,8 @@ class MainActivity : ComponentActivity() {
                                 navController.navigate("guessNumberScreen")
                             }, goToPlusMinus = {
                                 navController.navigate("plusMinusScreen")
+                            }, goToPostsScreen = {
+                                navController.navigate("postsScreen")
                             })
                         }
 
@@ -45,6 +47,16 @@ class MainActivity : ComponentActivity() {
                             PlusMinusScreen(goToLandingScreen = {
                                 navController.navigate("landingScreen")
                             })
+                        }
+
+                        composable("postsScreen") {
+                            PostsScreen(goToPostScreen = {postId ->
+                                navController.navigate("postScreen/$postId")
+                            })
+                        }
+
+                        composable("postScreen/{id}") {
+                            PostScreen()
                         }
 
 
