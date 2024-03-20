@@ -36,6 +36,8 @@ class MainActivity : ComponentActivity() {
                                 navController.navigate("plusMinusScreen")
                             }, goToPostsScreen = {
                                 navController.navigate("postsScreen")
+                            }, goToBMIScreen = {
+                                navController.navigate("bmiScreen")
                             })
                         }
 
@@ -57,6 +59,10 @@ class MainActivity : ComponentActivity() {
 
                         composable("postScreen/{id}") {
                             PostScreen()
+                        }
+
+                        composable("bmiScreen") {
+                            BMIScreen()
                         }
 
 
