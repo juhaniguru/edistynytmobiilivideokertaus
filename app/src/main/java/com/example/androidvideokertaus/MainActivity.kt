@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    NavHost(navController = navController, startDestination = "landingScreen") {
+                    NavHost(navController = navController, startDestination = "loginScreen") {
                         composable("landingScreen") {
                             LandingScreen(goToGuessNumber = {
                                 navController.navigate("guessNumberScreen")
@@ -57,6 +57,10 @@ class MainActivity : ComponentActivity() {
 
                         composable("postScreen/{id}") {
                             PostScreen()
+                        }
+
+                        composable("loginScreen") {
+                            LoginScreen()
                         }
 
 
