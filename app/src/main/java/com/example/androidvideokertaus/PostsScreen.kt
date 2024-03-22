@@ -62,8 +62,8 @@ fun PostsScreen(goToPostScreen : (Int) -> Unit) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         LazyColumn() {
-                            items(vm.postsState.value.posts) {
-                                PostListItem(item = it, goToPostScreen)
+                            items(vm.postsState.value.posts) {post->
+                                PostListItem(item = post, goToPostScreen)
                             }
                         }
                     }
