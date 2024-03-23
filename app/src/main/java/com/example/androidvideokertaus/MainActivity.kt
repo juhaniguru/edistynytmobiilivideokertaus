@@ -36,6 +36,12 @@ class MainActivity : ComponentActivity() {
                                 navController.navigate("plusMinusScreen")
                             }, goToPostsScreen = {
                                 navController.navigate("postsScreen")
+                            }, goToLoginScreen = {
+                                navController.navigate("loginScreen") {
+                                    popUpTo("loginScreen") {
+                                        inclusive = true
+                                    }
+                                }
                             })
                         }
 
@@ -60,7 +66,9 @@ class MainActivity : ComponentActivity() {
                         }
 
                         composable("loginScreen") {
-                            LoginScreen()
+                            LoginScreen(goToLandingScreen = {
+                                navController.navigate("landingScreen")
+                            })
                         }
 
 

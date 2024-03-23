@@ -1,5 +1,6 @@
 package com.example.androidvideokertaus
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,15 +16,31 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen() {
+fun LoginScreen(goToLandingScreen : () -> Unit) {
     val vm: LoginViewModel = viewModel()
+    val context = LocalContext.current
+
+    LaunchedEffect(key1 = vm.loginState.value.err) {
+        vm.loginState.value.err?.let {
+            Toast.makeText(context, vm.loginState.value.err, Toast.LENGTH_LONG).show()
+        }
+    }
+
+    LaunchedEffect(key1 = vm.loginState.value.loginOk) {
+        if(vm.loginState.value.loginOk) {
+            vm.setLogin(false)
+            goToLandingScreen()
+        }
+    }
 
 
     Scaffold(topBar = {
@@ -42,7 +59,7 @@ fun LoginScreen() {
                     )
                 )
 
-                vm.loginState.value.err != null -> Text("Virhe: ${vm.loginState.value.err}")
+
                 else -> {
                     Column(
                         modifier = Modifier.fillMaxSize(),
